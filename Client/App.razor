@@ -1,0 +1,25 @@
+﻿<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<Router AppAssembly="@typeof(App).Assembly">
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+    </Found>
+    <NotFound>
+        <LayoutView Layout="@typeof(MainLayout)">
+            <MudContainer MaxWidth="MaxWidth.Medium" Class="mt-8">
+                <MudPaper Elevation="3" Class="pa-6 text-center">
+                    <MudText Typo="Typo.h3" Color="Color.Error">⚠️ 404 页面未找到</MudText>
+                    <MudText Typo="Typo.body1" Class="mt-2">
+                        您访问的页面不存在，请检查 URL 或返回首页。
+                    </MudText>
+                    <MudButton Color="Color.Primary" Variant="Variant.Outlined"
+                               Class="mt-4" Href="/">
+                        返回首页
+                    </MudButton>
+                </MudPaper>
+            </MudContainer>
+        </LayoutView>
+    </NotFound>
+</Router>

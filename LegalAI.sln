@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegalAI.Server", "Server\LegalAI.Server.csproj", "{DDFA6181-0D52-4192-80A2-1EF84728C836}"
+	ProjectSection(ProjectDependencies) = postProject
+		{30DE9EA4-3887-4FA0-9B7A-1AFA877A629E} = {30DE9EA4-3887-4FA0-9B7A-1AFA877A629E}
+		{BCF56C96-4410-4575-8643-1B10B591752B} = {BCF56C96-4410-4575-8643-1B10B591752B}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegalAI.Client", "Client\LegalAI.Client.csproj", "{35C10DA4-3611-449B-80F7-B1672D94BEF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegalAI.Shared", "Shared\LegalAI.Shared.csproj", "{D310359F-466E-40CA-A799-DFD5A12CD03F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegalAI.Service", "Service\LegalAI.Service.csproj", "{BCF56C96-4410-4575-8643-1B10B591752B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D310359F-466E-40CA-A799-DFD5A12CD03F} = {D310359F-466E-40CA-A799-DFD5A12CD03F}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegalAI.ThirdPartyApi", "ThirdPartyApi\LegalAI.ThirdPartyApi.csproj", "{30DE9EA4-3887-4FA0-9B7A-1AFA877A629E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D310359F-466E-40CA-A799-DFD5A12CD03F} = {D310359F-466E-40CA-A799-DFD5A12CD03F}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DDFA6181-0D52-4192-80A2-1EF84728C836}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDFA6181-0D52-4192-80A2-1EF84728C836}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDFA6181-0D52-4192-80A2-1EF84728C836}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDFA6181-0D52-4192-80A2-1EF84728C836}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35C10DA4-3611-449B-80F7-B1672D94BEF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35C10DA4-3611-449B-80F7-B1672D94BEF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35C10DA4-3611-449B-80F7-B1672D94BEF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35C10DA4-3611-449B-80F7-B1672D94BEF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D310359F-466E-40CA-A799-DFD5A12CD03F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D310359F-466E-40CA-A799-DFD5A12CD03F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D310359F-466E-40CA-A799-DFD5A12CD03F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D310359F-466E-40CA-A799-DFD5A12CD03F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCF56C96-4410-4575-8643-1B10B591752B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCF56C96-4410-4575-8643-1B10B591752B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCF56C96-4410-4575-8643-1B10B591752B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCF56C96-4410-4575-8643-1B10B591752B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30DE9EA4-3887-4FA0-9B7A-1AFA877A629E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30DE9EA4-3887-4FA0-9B7A-1AFA877A629E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30DE9EA4-3887-4FA0-9B7A-1AFA877A629E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30DE9EA4-3887-4FA0-9B7A-1AFA877A629E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {68E7DE9F-C598-461F-BD4D-22BB813A7B4B}
+	EndGlobalSection
+EndGlobal
