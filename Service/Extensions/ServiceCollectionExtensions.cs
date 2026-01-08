@@ -1,0 +1,3 @@
+﻿using LegalAI.Server.Services;using LegalAI.Service.IServices;using Microsoft.Extensions.Configuration;using Microsoft.Extensions.DependencyInjection;namespace LegalAI.Service.Extensions;public static class ServiceCollectionExtensions{    public static IServiceCollection AddApiServices(this IServiceCollection services, IConfiguration config)    {
+        // 注册 services
+        services.AddScoped<IAIService, AIService>();        return services;    }}

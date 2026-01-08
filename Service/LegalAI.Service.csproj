@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Shared\LegalAI.Shared.csproj" />
+    <ProjectReference Include="..\ThirdPartyApi\LegalAI.ThirdPartyApi.csproj" />
   </ItemGroup>
 
 </Project>
