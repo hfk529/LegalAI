@@ -1,26 +1,33 @@
-﻿using LegalAI.Shared.Models;
-using System.Data.Common;
+﻿using LegalAI.ThirdPartyApi.Interfaces;
 
 namespace LegalAI.ThirdPartyApi.Services;
 
-public class AIOrchestrator
+public class AIProviderFactory
 {
-    private readonly AIProviderFactory _factory;
+    private readonly Dictionary<string, IAIProvider> _providers;
+    private readonly Random _random = new();
 
-    public AIOrchestrator(AIProviderFactory factory)
+    public AIProviderFactory(IEnumerable<IAIProvider> providers)
     {
-        _factory = factory;
+        _providers = providers.Where(p => p.IsEnabled).ToDictionary(p => p.Name, p => p);
     }
 
-    public async Task<AIResponse> GetResponseAsync(AIRequest request, CancellationToken ct = default)
+    public IAIProvider? GetProvider(string? providerName = null)
     {
-        var provider = _factory.GetProvider(request.ModelType == "legal" ? "DeepSeek" : null); // 法律场景优先用 DeepSeek
-
-        if (provider == null)
+        if (string.IsNullOrEmpty(providerName))
         {
-            return new AIResponse { IsError = true, ErrorMessage = "无可用 AI 服务" };
+            // 默认返回第一个可用的（或随机，按需调整）
+            return _providers.Values.FirstOrDefault();
         }
 
-        return await provider.GetResponseAsync(request, ct);
+        return _providers.GetValueOrDefault(providerName);
+    }
+
+    public List<string> GetAvailableProviders() => _providers.Keys.ToList();
+
+    public IAIProvider GetRandomProvider()
+    {
+        var enabledProviders = _providers.Values.ToList();
+        return enabledProviders.Count > 0 ? enabledProviders[_random.Next(enabledProviders.Count)] : null;
     }
 }
