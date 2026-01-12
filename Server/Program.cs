@@ -15,6 +15,19 @@ public class Program
         builder.Services.AddRazorPages();
         // 添加内存缓存（用于限流）
         builder.Services.AddMemoryCache();
+
+        // 添加 CORS 策略（开发时用于允许来自 Client 的请求）
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("DevCors", policy =>
+            {
+                policy.WithOrigins("https://localhost:5000", "http://localhost:5001")
+                      .AllowAnyHeader()
+                      .AllowAnyMethod()
+                      .AllowCredentials();
+            });
+        });
+
         // 注册 Swagger 服务
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen(c =>
@@ -72,6 +85,11 @@ public class Program
 
         app.UseRouting();
 
+        // 在路由后、映射控制器前启用 CORS
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseCors("DevCors");
+        }
 
         app.MapRazorPages();
         app.MapControllers();
