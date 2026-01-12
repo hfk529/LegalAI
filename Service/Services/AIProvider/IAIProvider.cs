@@ -1,4 +1,5 @@
-﻿using LegalAI.Shared.Models;
+﻿using LegalAI.Shared.Models.Input;
+using LegalAI.Shared.Models.Result;
 
 namespace LegalAI.Service.Services.AIProvider
 {

@@ -1,7 +1,9 @@
 ﻿using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
-using LegalAI.Shared.Models;
+using LegalAI.Shared.Entity.Config;
+using LegalAI.Shared.Models.Input;
+using LegalAI.Shared.Models.Result;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -119,19 +121,5 @@ public class DeepSeekProvider : IAIProvider
         }
         return sources.Distinct().ToList();
     }
-
-    private class DeepSeekResponse
-    {
-        public List<Choice>? Choices { get; set; }
-    }
-
-    private class Choice
-    {
-        public Message? Message { get; set; }
-    }
-
-    private class Message
-    {
-        public string? Content { get; set; }
-    }
+    
 }

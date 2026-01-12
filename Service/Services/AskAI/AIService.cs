@@ -1,11 +1,7 @@
 ﻿using LegalAI.Service.Factory;
-using LegalAI.Shared.Models;
-using Microsoft.Extensions.Configuration;
+using LegalAI.Shared.Models.Input;
+using LegalAI.Shared.Models.Result;
 using Microsoft.Extensions.Logging;
-using System.Net.Http.Json;
-using System.Text;
-using System.Text.Json;
-using System.Text.RegularExpressions;
 
 namespace LegalAI.Service.Services.AskAI;
 

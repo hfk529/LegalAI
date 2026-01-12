@@ -89,10 +89,10 @@
     private bool isGenerating = false;
     private string? error = null;
 
-    private void OnKeyDown(KeyboardEventArgs e)
+    private async Task OnKeyDown(KeyboardEventArgs e)
     {
         if (e.Key == "Enter" && e.CtrlKey)
-            AskAI();
+            await AskAI();
     }
 
     private async Task AskAI()
@@ -110,7 +110,7 @@
 
         try
         {
-            var request = new LegalAI.Shared.Models.AIRequest
+            var request = new AIRequest
                 {
                     Question = userQuestion
                 };
@@ -119,7 +119,7 @@
 
             if (response.IsSuccessStatusCode)
             {
-                var result = await response.Content.ReadFromJsonAsync<LegalAI.Shared.Models.AIResponse>();
+                var result = await response.Content.ReadFromJsonAsync<AIResponse>();
                 if (result?.IsError == true)
                 {
                     error = result.ErrorMessage;

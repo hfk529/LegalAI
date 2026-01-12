@@ -1,0 +1,1 @@
+﻿namespace LegalAI.Shared.Models.Input{    public class AIRequest    {        public string Question { get; set; } = string.Empty;        public string UserId { get; set; } = string.Empty; // 用于限流        public string Context { get; set; } = string.Empty; // 对话上下文        public string ModelType { get; set; } = "legal"; // "legal", "general", "medical"    }}

@@ -1,5 +1,5 @@
 ﻿using LegalAI.Service.Extensions;
-using LegalAI.Shared.Models;
+using LegalAI.Shared.Entity.Config;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 

@@ -1,7 +1,9 @@
 ﻿using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
-using LegalAI.Shared.Models;
+using LegalAI.Shared.Entity.Config;
+using LegalAI.Shared.Models.Input;
+using LegalAI.Shared.Models.Result;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -96,13 +98,4 @@ public class QwenProvider : IAIProvider
         return sources;
     }
 
-    private class QwenResponse
-    {
-        public Output? Output { get; set; }
-    }
-
-    private class Output
-    {
-        public string? Text { get; set; }
-    }
 }

@@ -25,7 +25,7 @@ public class AIProviderFactory
 
     public List<string> GetAvailableProviders() => _providers.Keys.ToList();
 
-    public IAIProvider GetRandomProvider()
+    public IAIProvider? GetRandomProvider()
     {
         var enabledProviders = _providers.Values.ToList();
         return enabledProviders.Count > 0 ? enabledProviders[_random.Next(enabledProviders.Count)] : null;

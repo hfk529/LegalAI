@@ -1,4 +1,4 @@
-﻿namespace LegalAI.Shared.Models;
+﻿namespace LegalAI.Shared.Entity.Config;
 
 public class AIConfig
 {
