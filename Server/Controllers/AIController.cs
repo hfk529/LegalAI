@@ -1,4 +1,4 @@
-﻿using LegalAI.Service.IServices;
+﻿using LegalAI.Service.Services.AskAI;
 using LegalAI.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;

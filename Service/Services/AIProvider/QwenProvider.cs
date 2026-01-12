@@ -1,12 +1,11 @@
 ﻿using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
-using LegalAI.Service.Interfaces;
 using LegalAI.Shared.Models;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace LegalAI.Service.Providers;
+namespace LegalAI.Service.Services.AIProvider;
 
 public class QwenProvider : IAIProvider
 {

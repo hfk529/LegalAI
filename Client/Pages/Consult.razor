@@ -115,7 +115,7 @@
                     Question = userQuestion
                 };
 
-            var response = await Http.PostAsJsonAsync("api/ai/consult", request);
+            var response = await Http.PostAsJsonAsync("api/AI/consult", request);
 
             if (response.IsSuccessStatusCode)
             {

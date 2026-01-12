@@ -1,6 +1,6 @@
 ﻿using LegalAI.Shared.Models;
 
-namespace LegalAI.Service.Interfaces
+namespace LegalAI.Service.Services.AIProvider
 {
     public interface IAIProvider
     {

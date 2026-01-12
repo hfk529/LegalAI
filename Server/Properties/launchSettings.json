@@ -13,7 +13,7 @@
         "dotnetRunMessages": true,
         "launchBrowser": true,
         "launchUrl": "", // 确保这里指向正确的路径
-        "applicationUrl": "https://localhost:7098;http://localhost:5259",
+        "applicationUrl": "https://localhost:7000;http://localhost:7001",
         "environmentVariables": {
           "ASPNETCORE_ENVIRONMENT": "Development"
         }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LegalAI.Service.IServices
+namespace LegalAI.Service.Services.AskAI
 {
     public interface IAIService
     {

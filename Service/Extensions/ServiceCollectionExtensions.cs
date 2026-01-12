@@ -1,8 +1,6 @@
-﻿using LegalAI.Server.Services;
-using LegalAI.Service.Factory;
-using LegalAI.Service.Interfaces;
-using LegalAI.Service.IServices;
-using LegalAI.Service.Providers;
+﻿using LegalAI.Service.Factory;
+using LegalAI.Service.Services.AIProvider;
+using LegalAI.Service.Services.AskAI;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

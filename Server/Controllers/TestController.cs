@@ -1,5 +1,5 @@
 ﻿using LegalAI.Service.Factory;
-using LegalAI.Service.Interfaces;
+using LegalAI.Service.Services.AIProvider;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 

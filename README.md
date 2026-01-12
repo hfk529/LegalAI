@@ -6,3 +6,6 @@ Blazor WebAssembly + .NET 6 + Entity Framework Core + Sql Server
 
 2026.1.5 
 使用qwen3-coder模型生成和搭建基础的框架代码
+
+2026.1.12
+解决了WebApi项目调用大模型API时遇到的问题

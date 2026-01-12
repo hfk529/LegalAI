@@ -1,4 +1,4 @@
-﻿using LegalAI.Service.Interfaces;
+﻿using LegalAI.Service.Services.AIProvider;
 
 namespace LegalAI.Service.Factory;
 

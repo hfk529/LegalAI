@@ -1,5 +1,4 @@
 ﻿using LegalAI.Service.Factory;
-using LegalAI.Service.IServices;
 using LegalAI.Shared.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -8,7 +7,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 
-namespace LegalAI.Server.Services;
+namespace LegalAI.Service.Services.AskAI;
 
 public class AIService : IAIService
 {
