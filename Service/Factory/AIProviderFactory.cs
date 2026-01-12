@@ -1,6 +1,6 @@
-﻿using LegalAI.ThirdPartyApi.Interfaces;
+﻿using LegalAI.Service.Interfaces;
 
-namespace LegalAI.ThirdPartyApi.Services;
+namespace LegalAI.Service.Factory;
 
 public class AIProviderFactory
 {

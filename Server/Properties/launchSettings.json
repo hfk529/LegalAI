@@ -12,7 +12,7 @@
         "commandName": "Project",
         "dotnetRunMessages": true,
         "launchBrowser": true,
-        "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
+        "launchUrl": "", // 确保这里指向正确的路径
         "applicationUrl": "https://localhost:7098;http://localhost:5259",
         "environmentVariables": {
           "ASPNETCORE_ENVIRONMENT": "Development"

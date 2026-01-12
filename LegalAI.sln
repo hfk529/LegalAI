@@ -1,11 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197
+# Visual Studio Version 18
+VisualStudioVersion = 18.1.11312.151 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegalAI.Server", "Server\LegalAI.Server.csproj", "{DDFA6181-0D52-4192-80A2-1EF84728C836}"
 	ProjectSection(ProjectDependencies) = postProject
-		{30DE9EA4-3887-4FA0-9B7A-1AFA877A629E} = {30DE9EA4-3887-4FA0-9B7A-1AFA877A629E}
 		{BCF56C96-4410-4575-8643-1B10B591752B} = {BCF56C96-4410-4575-8643-1B10B591752B}
 	EndProjectSection
 EndProject
@@ -14,11 +13,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegalAI.Shared", "Shared\LegalAI.Shared.csproj", "{D310359F-466E-40CA-A799-DFD5A12CD03F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegalAI.Service", "Service\LegalAI.Service.csproj", "{BCF56C96-4410-4575-8643-1B10B591752B}"
-	ProjectSection(ProjectDependencies) = postProject
-		{D310359F-466E-40CA-A799-DFD5A12CD03F} = {D310359F-466E-40CA-A799-DFD5A12CD03F}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegalAI.ThirdPartyApi", "ThirdPartyApi\LegalAI.ThirdPartyApi.csproj", "{30DE9EA4-3887-4FA0-9B7A-1AFA877A629E}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D310359F-466E-40CA-A799-DFD5A12CD03F} = {D310359F-466E-40CA-A799-DFD5A12CD03F}
 	EndProjectSection
@@ -45,10 +39,6 @@ Global
 		{BCF56C96-4410-4575-8643-1B10B591752B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCF56C96-4410-4575-8643-1B10B591752B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCF56C96-4410-4575-8643-1B10B591752B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{30DE9EA4-3887-4FA0-9B7A-1AFA877A629E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30DE9EA4-3887-4FA0-9B7A-1AFA877A629E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{30DE9EA4-3887-4FA0-9B7A-1AFA877A629E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{30DE9EA4-3887-4FA0-9B7A-1AFA877A629E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

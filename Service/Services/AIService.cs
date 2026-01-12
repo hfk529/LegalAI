@@ -1,3 +1,41 @@
-﻿using LegalAI.Service.IServices;using LegalAI.Shared.Models;using LegalAI.ThirdPartyApi.Services;using Microsoft.Extensions.Configuration;using Microsoft.Extensions.Logging;using System.Net.Http.Json;using System.Text;using System.Text.Json;using System.Text.RegularExpressions;namespace LegalAI.Server.Services;public class AIService : IAIService{    private readonly ILogger<AIService> _logger;    private readonly AIOrchestrator _aiOrchestrator;    public AIService(ILogger<AIService> logger, AIOrchestrator aIOrchestrator)    {        _logger = logger;
+﻿using LegalAI.Service.Factory;
+using LegalAI.Service.IServices;
+using LegalAI.Shared.Models;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using System.Net.Http.Json;
+using System.Text;
+using System.Text.Json;
+using System.Text.RegularExpressions;
+
+namespace LegalAI.Server.Services;
+
+public class AIService : IAIService
+{
+    private readonly ILogger<AIService> _logger;
+    private readonly AIOrchestrator _aiOrchestrator;
+
+    public AIService(ILogger<AIService> logger, AIOrchestrator aIOrchestrator)
+    {
+        _logger = logger;
         _aiOrchestrator = aIOrchestrator;
-    }    public async Task<AIResponse> GetLegalAnswerAsync(AIRequest request, CancellationToken ct = default)    {        try        {            AIResponse aIResponse = await _aiOrchestrator.GetResponseAsync(request, ct);            return aIResponse;        }        catch (OperationCanceledException)        {            return new AIResponse { IsError = true, ErrorMessage = "请求超时，请重试" };        }        catch (Exception ex)        {            _logger.LogError(ex, "AI 服务异常");            return new AIResponse { IsError = true, ErrorMessage = "系统繁忙，请稍后再试" };        }    }    // 🔍 从回答中提取法条引用（示例：匹配《民法典》第XXX条）    private List<string> ExtractSources(string answer)    {        var sources = new List<string>();        var pattern = @"《([^》]+)》第(\d+)条";        var matches = System.Text.RegularExpressions.Regex.Matches(answer, pattern);        foreach (Match m in matches)        {            sources.Add($"《{m.Groups[1]}》第{m.Groups[2]}条");        }        return sources.Distinct().ToList();    }    // DeepSeek API 返回结构    private class DeepSeekResponse    {        public List<Choice>? Choices { get; set; }    }    private class Choice    {        public Message? Message { get; set; }    }    private class Message    {        public string? Content { get; set; }    }}
+    }
+
+    public async Task<AIResponse> GetLegalAnswerAsync(AIRequest request, CancellationToken ct = default)
+    {
+        try
+        {
+            AIResponse aIResponse = await _aiOrchestrator.GetResponseAsync(request, ct);
+            return aIResponse;
+        }
+        catch (OperationCanceledException)
+        {
+            return new AIResponse { IsError = true, ErrorMessage = "请求超时，请重试" };
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "AI 服务异常");
+            return new AIResponse { IsError = true, ErrorMessage = "系统繁忙，请稍后再试" };
+        }
+    }
+}

@@ -1,5 +1,5 @@
-﻿using LegalAI.ThirdPartyApi.Extensions;
-using LegalAI.Service.Extensions;
+﻿using LegalAI.Service.Extensions;
+using LegalAI.Shared.Models;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
@@ -40,7 +40,11 @@ public class Program
 
         // 注册 AI 服务
         builder.Services.AddApiServices(builder.Configuration);
-        builder.Services.AddAIProviders(builder.Configuration);
+
+
+        builder.Services.Configure<AIConfig>(
+            builder.Configuration.GetSection("AIProviders") // 注意这里的节名
+        );
 
         var app = builder.Build();
 
