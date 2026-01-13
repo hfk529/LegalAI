@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LegalAI.Service.Services.AskAI
 {
-    public interface IAIService
+    public interface IAskAIService
     {
         Task<AIResponse> GetLegalAnswerAsync(AIRequest request, CancellationToken ct = default);
     }

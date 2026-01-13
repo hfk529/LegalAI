@@ -1,6 +1,7 @@
 ﻿using LegalAI.Service.Factory;
 using LegalAI.Service.Services.AIProvider;
 using LegalAI.Service.Services.AskAI;
+using LegalAI.Service.Services.DocGen;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -19,7 +20,8 @@ public static class ServiceCollectionExtensions
         services.AddScoped<AIOrchestrator>();
 
         // 注册 services
-        services.AddScoped<IAIService, AIService>();
+        services.AddScoped<IAskAIService, AskAIService>();
+        services.AddScoped<IDocumentService, DocumentService>();
 
         return services;
     }
