@@ -23,6 +23,21 @@
                       @onkeydown="OnKeyDown"
                       Disabled="@isThinking" />
 
+        @if (history.Any())
+        {
+            <div class="mt-2">
+                <MudText Typo="Typo.caption" Class="mb-1">历史记录（最近5次）：</MudText>
+                <div>
+                    @foreach (var h in history)
+                    {
+                        <MudButton Variant="Variant.Outlined" Size="Size.Small" Class="mr-2 mb-2" OnClick="@(() => SelectHistory(h))">@h</MudButton>
+                        <MudIconButton Icon="@Icons.Material.Filled.Close" Size="Size.Small" Color="Color.Default" OnClick="@(() => RemoveHistory(h))" Class="mb-2" />
+                    }
+                    <MudButton Variant="Variant.Text" Size="Size.Small" Color="Color.Secondary" OnClick="ClearHistory">清空</MudButton>
+                </div>
+            </div>
+        }
+
         <MudButton Color="Color.Primary"
                    Variant="Variant.Filled"
                    Class="mt-4"
@@ -142,10 +157,98 @@
     private string facts = "";
     private string complaintResult = "";
 
+    // 历史记录
+    private List<string> history = new();
+    private const string StorageKey = "consult_history_v1";
+    private const int MaxHistory = 5;
+
     private async Task OnKeyDown(KeyboardEventArgs e)
     {
         if (e.Key == "Enter" && e.CtrlKey)
             await AskAI();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await LoadHistoryAsync();
+        }
+    }
+
+    private async Task LoadHistoryAsync()
+    {
+        try
+        {
+            var json = await JSRuntime.InvokeAsync<string>("localStorage.getItem", StorageKey);
+            if (!string.IsNullOrEmpty(json))
+            {
+                var items = System.Text.Json.JsonSerializer.Deserialize<List<string>>(json);
+                if (items != null)
+                    history = items;
+            }
+        }
+        catch
+        {
+            // 忽略本地存储读取错误
+        }
+        StateHasChanged();
+    }
+
+    private async Task SaveHistoryAsync()
+    {
+        try
+        {
+            var json = System.Text.Json.JsonSerializer.Serialize(history);
+            await JSRuntime.InvokeVoidAsync("localStorage.setItem", StorageKey, json);
+        }
+        catch
+        {
+            // 忽略本地存储写入错误
+        }
+    }
+
+    private async Task AddToHistory(string question)
+    {
+        if (string.IsNullOrWhiteSpace(question))
+            return;
+
+        question = question.Trim();
+        // 去重并放到最前面
+        history.RemoveAll(h => string.Equals(h, question, StringComparison.Ordinal));
+        history.Insert(0, question);
+        if (history.Count > MaxHistory)
+            history.RemoveRange(MaxHistory, history.Count - MaxHistory);
+
+        await SaveHistoryAsync();
+        StateHasChanged();
+    }
+
+    private async Task RemoveHistory(string item)
+    {
+        if (history.Remove(item))
+        {
+            await SaveHistoryAsync();
+            StateHasChanged();
+        }
+    }
+
+    private async Task ClearHistory()
+    {
+        history.Clear();
+        try
+        {
+            await JSRuntime.InvokeVoidAsync("localStorage.removeItem", StorageKey);
+        }
+        catch
+        {
+        }
+        StateHasChanged();
+    }
+
+    private void SelectHistory(string item)
+    {
+        userQuestion = item;
     }
 
     private async Task AskAI()
@@ -181,6 +284,8 @@
                 {
                     aiResponse = result?.Answer ?? "";
                     sources = result?.Sources ?? new();
+                    // 成功则保存历史
+                    await AddToHistory(userQuestion);
                 }
             }
             else if (response.StatusCode == System.Net.HttpStatusCode.TooManyRequests)

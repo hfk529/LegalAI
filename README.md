@@ -10,3 +10,9 @@ Blazor WebAssembly + .NET 6 + Entity Framework Core + Sql Server
 2026.1.12
 1.解决了WebApi项目调用大模型API时遇到的问题
 2.解决了前端页面调用后端接口时的跨域问题，初步实现了法律咨询功能
+
+2026.1.13
+增加功能【诉状文书生成】
+
+2026.1.19
+1.增加功能【历史记录 本地存储最近5次提问（localStorage）】

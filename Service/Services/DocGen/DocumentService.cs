@@ -1,4 +1,4 @@
-using LegalAI.Service.Factory;
+﻿using LegalAI.Service.Factory;
 using LegalAI.Shared.Models.Input;
 using LegalAI.Shared.Models.Result;
 using Microsoft.Extensions.Logging;
@@ -20,7 +20,7 @@ public class DocumentService : IDocumentService
     {
         try
         {
-            // ? ModelType ?????????? Orchestrator/Provider ???????? prompt ???
+            // 将 ModelType 标记为文书生成，以便 Orchestrator/Provider 根据类型选择不同的 prompt 或模型
             request.ModelType = "doc:complaint";
 
             var response = await _orchestrator.GetResponseAsync(request, ct);
@@ -29,12 +29,12 @@ public class DocumentService : IDocumentService
         }
         catch (OperationCanceledException)
         {
-            return new AIResponse { IsError = true, ErrorMessage = "??????????" };
+            return new AIResponse { IsError = true, ErrorMessage = "文书生成超时，请重试" };
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "??????");
-            return new AIResponse { IsError = true, ErrorMessage = "???????????" };
+            _logger.LogError(ex, "文书生成服务异常");
+            return new AIResponse { IsError = true, ErrorMessage = "系统繁忙，文书生成失败" };
         }
     }
 }
